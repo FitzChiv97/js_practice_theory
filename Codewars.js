@@ -2699,16 +2699,71 @@ const greetDevelopers = list => list.map(
 
 
 // Maximum subarray sum
-function maxSequence(arr){
-  if(arr.every(el => el < 0) || !arr.length) return 0;
+// function maxSequence(arr){
+//   if(arr.every(el => el < 0) || !arr.length) return 0;
 
-  let sum = 0;
-  for(let i = 0; i < arr.length; i++) {
-    for(let j = arr.length; j > i+1; j--) {
-      let subArrSum = arr.slice(i, j).reduce((sum, el) => sum + el, 0);
-      if (subArrSum > sum) sum = subArrSum;
-    }
+//   let sum = 0;
+//   for(let i = 0; i < arr.length; i++) {
+//     for(let j = arr.length; j > i+1; j--) {
+//       let subArrSum = arr.slice(i, j).reduce((sum, el) => sum + el, 0);
+//       if (subArrSum > sum) sum = subArrSum;
+//     }
+//   }
+//   return sum;
+// }
+// console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+
+// Extract the domain name from a URL (2 solutions)
+// function domainName(url){
+//   let domain = url;
+  
+//   if (domain.indexOf('//') > 0) {
+//     domain = domain.slice(domain.indexOf('//') + 2);
+//   };
+
+//   if (!domain.indexOf('www.')) {
+//     domain = domain.slice(domain.indexOf('www.') + 4);
+//   }
+
+//   return domain.slice(0, domain.indexOf('.'));
+// }
+
+// function domainName(url) {
+//   return url.replace('http://', '').
+//              replace('https://', '').
+//              replace('www.', '').
+//              split('.')[0];
+// }
+// console.log(domainName("86b-xthzi1-nv-ub0uwsa2vkzfu.pro"));
+
+
+// Most digits
+// function findLongest(array){
+//   return array.reduce((a, b) => (`${a}`.length > `${b}`.length)? a: b);
+// }
+// console.log(findLongest([1, 10, 100]))
+
+
+// Convert an array of strings to array of numbers
+// function toNumberArray(stringarray){ // parse a string arg and return a floating-point number
+//   return stringarray.map(parseFloat);
+// }
+// console.log(toNumberArray(["1.1","2.2","3.3"]));
+
+
+// Parts of a list
+function partlist(arr) {
+  let result = [];
+
+  for(let i = 1; i < arr.length; i++) {
+    let start = arr.slice(i, arr.length);
+    console.log(start);
+
+    // let end = arr.slice(arr.length - i);
+    // console.log(end);
+
+    // console.log(' ');
   }
-  return sum;
 }
-console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+console.log(partlist(["I", "wish", "I", "hadn't", "come"]));
