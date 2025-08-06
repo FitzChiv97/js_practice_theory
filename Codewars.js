@@ -2752,18 +2752,93 @@ const greetDevelopers = list => list.map(
 // console.log(toNumberArray(["1.1","2.2","3.3"]));
 
 
-// Parts of a list
-function partlist(arr) {
-  let result = [];
+// Parts of a list (2 solutions)
+// function partlist(arr) {
+//   let result = [];
 
-  for(let i = 1; i < arr.length; i++) {
-    let start = arr.slice(i, arr.length);
-    console.log(start);
+//   for(let i = 1; i < arr.length; i++) {
+//     let start = arr.slice(0, i).join(' ');
+//     let end = arr.slice(i).join(' ');
+    
+//     result.push([start, end]);
+//   }
 
-    // let end = arr.slice(arr.length - i);
-    // console.log(end);
+//   return result;
+// }
 
-    // console.log(' ');
-  }
+// function partlist(arr){
+//   return arr
+//     .map((_,i) => [
+//       arr.slice(0,i).join(' '), 
+//       arr.slice(i).join(' ')
+//     ])
+//     .slice(1);
+// }
+// console.log(partlist(["I", "wish", "I", "hadn't", "come"]));
+
+
+// String incrementer
+// function incrementString(string) {
+//   let array = string.split('');
+//   let nums = [];
+
+//   for(let i = array.length - 1; i >= 0; i--) {
+//     if (Number(array[i]) >= 0) nums.push(array.pop());
+//     else break;
+//   }
+
+//   nums = nums.reverse().join('');
+//   let increasedNums = String(Number(nums) + 1);
+
+//   if(increasedNums.length >= nums.length) {
+//     return array.join('') + increasedNums;
+
+//   } else {
+//     nums = nums.slice(0, nums.length - increasedNums.length) + increasedNums;
+//     return array.join('') + nums;
+//   }
+// }
+// console.log(incrementString('foobar00'));
+
+
+// Reverse a Number (2 solutions)
+// function reverseNumber(n) {
+//   let str = Array.from(String(n));
+
+//   if (!str.indexOf('-')) {
+//     str.shift();
+//     return -str.reverse().join('');
+//   } else {
+//     return +str.reverse().join('');
+//   }
+// }
+
+// function reverseNumber(n) {
+//   return Math.sign(n) * Math.abs(n).toString().split('').reverse().join('');
+// }
+// console.log(reverseNumber(-456));
+
+
+// Sort the Gift Code
+// const sortGiftCode = (code) => code.split('').sort().join('');
+// console.log(sortGiftCode('zyxwvutsrqponmlkjihgfedcba'));
+
+
+// Build a square(ASCII ART) (2 solutions)
+// function generateShape(n){
+//   return ('+'.repeat(n) + '\n').repeat(n).trim();
+// }
+// function generateShape(n){
+//   return [...Array(n)].map(str => '+'.repeat(n)).join('\n');
+// }
+// console.log(generateShape(37));
+
+
+// Switcheroo
+function switcheroo(x){
+  return x
+    .split('')
+    .map(el => (el === 'a')? 'b': (el === 'b')? 'a': el)
+    .join('');
 }
-console.log(partlist(["I", "wish", "I", "hadn't", "come"]));
+console.log(switcheroo('bbabcabb'));
