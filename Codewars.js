@@ -2319,16 +2319,6 @@ const greetDevelopers = list => list.map(
 // console.log(twoSort(["bitcoin", "take", "over", "the", "world"]));
 
 
-// The Supermarket Queue(unfinished)
-// function queueTime(customers, n) {
-//   for(let i = 0; i < n; i++) {
-    
-//   }
-//   console.log(tills);
-// }
-// console.log(queueTime([2,10,3,7,4], 3));
-
-
 // // Take a Num And Sum Its Digits Raised To The Consec Powers (2 solutions)
 // function sumDigPow(a, b) {
 //   let arr = [];
@@ -2835,10 +2825,166 @@ const greetDevelopers = list => list.map(
 
 
 // Switcheroo
-function switcheroo(x){
-  return x
-    .split('')
-    .map(el => (el === 'a')? 'b': (el === 'b')? 'a': el)
-    .join('');
+// function switcheroo(x){
+//   return x
+//     .split('')
+//     .map(el => (el === 'a')? 'b': (el === 'b')? 'a': el)
+//     .join('');
+// }
+// console.log(switcheroo('bbabcabb'));
+
+
+// Simple beads count
+// function countRedBeads(n) {
+//   return (n < 2)? 0: (n * 2) - 2;
+// }
+
+
+// Filter the number
+// function filterString(value) {
+//   return Number(value.split('').filter(el => el <= 9).join(''));
+// }
+
+
+// CamelCase Method
+// String.prototype.camelCase = function() {
+//   return this
+//     .split(' ')
+//     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+//     .join('');
+// }
+// console.log('test case'.camelCase());
+
+
+// Give me a Diamond
+// function diamond(n){
+//   if (n <= 0 || n % 2 === 0) {
+//     return null;
+//   };
+
+//   let diamond = '';
+//   let spaces = Math.floor(n / 2);
+
+//   for (let i = 1; i < n; i += 2) {
+//     diamond += ' '.repeat(spaces) + '*'.repeat(i) + '\n';
+//     spaces--;
+//   };
+
+//   diamond += '*'.repeat(n) + '\n';
+
+//   for (let i = n - 2; i >= 1; i -= 2) {
+//     spaces++;
+//     diamond += ' '.repeat(spaces) + '*'.repeat(i) + '\n'; 
+//   }
+
+//   return diamond;
+// }
+// console.log(diamond(13));
+
+
+// Lario and Muigi Pipe Problem
+// function pipeFix(nums){
+//   let arr = [];
+
+//   for (let i = nums[0]; i <= nums.slice(-1);i++) {
+//     arr.push(i);
+//   };
+
+//   return arr;
+// }
+
+
+// The Supermarket Queue(unfinished)
+// function queueTime(customers, n) {
+//   let tills = [...Array(n)].map(till => {
+//     return (customers.length !== 0)? [customers.shift()]: [0];
+//   });
+
+//   while (customers.length !== 0) {
+//       let shortest = tills
+//         .map(el => el.reduce((sum, el) => sum + el, 0))
+//         .sort((a,b) => a - b)[0];
+    
+//       let shortestId = tills
+//         .map(el => el.reduce((sum, el) => sum + el, 0))
+//         .findIndex(el => el <= shortest);
+    
+//       tills[shortestId].push(customers.shift()); 
+//   }
+
+//   return tills
+//     .map(el => el.reduce((sum, el) => sum + el, 0))
+//     .sort((a,b) => a - b)
+//     .pop();
+// }
+// console.log(queueTime([1,2,3,4,1,3,2,5,2,1], 3));
+
+
+// Scramblies (unfinished)
+// function scramble(str1, str2) {
+//   let pattern = new RegExp(`[${str2}]`, 'g');
+//   let matches = str1.match(pattern);
+
+//   for(let i = 0; i < str2.length; i++) {
+//     if (matches.indexOf(str2[i]) === -1) {
+//       return false;
+//     }
+//   }
+
+/*
+  for(let i = 0; i < str2.length; i++) {
+    if(!matches.includes(str2[i])) {
+      return false;
+
+    } else {
+      console.log(matches);
+      matches.splice(matches.indexOf(str2[i]),1);
+    }
+  }
+*/
+
+//   return true;
+// }
+// console.log(scramble('scripttttjjjavx', 'javascript'));
+
+
+// Simple Encryption #1 - Alternating Split
+function encrypt(text, n) {
+  if (!text || !text.length || n < 0) return text;
+
+  let array = text.split('');
+
+  for (let i = 0; i < n; i++) {
+    let odd = array.filter((_,i) => i % 2);
+    let even = array.filter((_,i) => !(i % 2));
+    array = odd.concat(even);
+  }
+
+  return array.join('');
 }
-console.log(switcheroo('bbabcabb'));
+
+function decrypt(encryptedText, n) {
+  if (!encryptedText || !encryptedText.length || n < 0) return encryptedText;
+
+  let array = encryptedText.split('');
+
+  for (let i = 0; i < n; i++) {
+    let odd = array.slice(0, Math.floor(array.length / 2));
+    let even = array.slice(Math.floor(array.length / 2));
+
+    array = [];
+
+    let iterations = (even.length > odd.length) ? even.length: odd.length;
+
+    for (let j = 0; j < iterations; j++) {
+      array.push(even[j]);
+      array.push(odd[j]);
+    }
+
+    array = array.filter(char => typeof char === 'string');
+  }
+
+  return array.join('');
+}
+console.log(encrypt('This is a test!', 1));
+console.log(decrypt('This is a test!', 4));
