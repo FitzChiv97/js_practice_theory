@@ -2949,42 +2949,93 @@ const greetDevelopers = list => list.map(
 
 
 // Simple Encryption #1 - Alternating Split
-function encrypt(text, n) {
-  if (!text || !text.length || n < 0) return text;
+// function encrypt(text, n) {
+//   if (!text || !text.length || n < 0) return text;
 
-  let array = text.split('');
+//   let array = text.split('');
 
-  for (let i = 0; i < n; i++) {
-    let odd = array.filter((_,i) => i % 2);
-    let even = array.filter((_,i) => !(i % 2));
-    array = odd.concat(even);
-  }
+//   for (let i = 0; i < n; i++) {
+//     let odd = array.filter((_,i) => i % 2);
+//     let even = array.filter((_,i) => !(i % 2));
+//     array = odd.concat(even);
+//   }
 
-  return array.join('');
-}
+//   return array.join('');
+// }
 
-function decrypt(encryptedText, n) {
-  if (!encryptedText || !encryptedText.length || n < 0) return encryptedText;
+// function decrypt(encryptedText, n) {
+//   if (!encryptedText || !encryptedText.length || n < 0) return encryptedText;
 
-  let array = encryptedText.split('');
+//   let array = encryptedText.split('');
 
-  for (let i = 0; i < n; i++) {
-    let odd = array.slice(0, Math.floor(array.length / 2));
-    let even = array.slice(Math.floor(array.length / 2));
+//   for (let i = 0; i < n; i++) {
+//     let odd = array.slice(0, Math.floor(array.length / 2));
+//     let even = array.slice(Math.floor(array.length / 2));
 
-    array = [];
+//     array = [];
 
-    let iterations = (even.length > odd.length) ? even.length: odd.length;
+//     let iterations = (even.length > odd.length) ? even.length: odd.length;
 
-    for (let j = 0; j < iterations; j++) {
-      array.push(even[j]);
-      array.push(odd[j]);
-    }
+//     for (let j = 0; j < iterations; j++) {
+//       array.push(even[j]);
+//       array.push(odd[j]);
+//     }
 
-    array = array.filter(char => typeof char === 'string');
-  }
+//     array = array.filter(char => typeof char === 'string');
+//   }
 
-  return array.join('');
-}
-console.log(encrypt('This is a test!', 1));
-console.log(decrypt('This is a test!', 4));
+//   return array.join('');
+// }
+// console.log(encrypt('This is a test!', 1));
+// console.log(decrypt('This is a test!', 4)); 
+
+
+// Sum of Triangular Numbers(2 solutions)
+// function sumTriangularNumbers(n) {
+//   let sumTriangular = 0;
+//   let triangular = 0;
+
+//   for(let i = 1; i <= n; i++) {
+//     triangular += i;
+//     sumTriangular += triangular;
+//     console.log(triangular);
+//   }
+
+//   return sumTriangular;
+// }
+
+//RECURSION
+// function sumTriangularNumbers(n) {
+//   return (n > 0)? (n*(n+1)/2) + sumTriangularNumbers(--n): 0;
+// }
+// console.log(sumTriangularNumbers(6));
+
+
+// Alphabet symmetry
+// function solve(arr){  
+//   return arr.map(str => {
+//     return str.toLowerCase().split('').reduce((sum, char, id) => {
+//         return (id + 1 === char.charCodeAt(0) - 96)? ++sum: sum;
+//     }, 0);
+//   });
+// };
+// console.log(solve(["abode","ABc","xyzD"]));
+
+
+// Odd-Even String Sort
+// function sortMyString(S) {
+//   return [...S].filter((_,i) => !(i % 2)).join('') + ' ' +
+//     [...S].filter((_,i) => i % 2).join('');
+// }
+// console.log(sortMyString("CodeWars"));
+
+
+// All unique 2 solutions (Set)
+// function hasUniqueChars(str) {
+//   return [...str].every((char, id, arr) => arr.indexOf(char, id+1) == -1);
+// }
+
+// function hasUniqueChars(str) {
+//   return new Set(str).size === str.length;
+// }
+// console.log(hasUniqueChars("abcdef"));

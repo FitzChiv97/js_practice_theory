@@ -1,0 +1,94 @@
+let obj = {
+  1: "name",
+  2: "surname",
+  3: "age",
+};
+
+obj[Symbol.iterator] = function() {
+  return {
+    count: 1,
+    next() {
+      if(this.count <= 3) {
+        return {done: false, value: this.count++};
+      } else {
+        return {done: true};
+      };
+    },
+  };
+};
+
+// for (let key of obj) {
+//   console.log(obj[key]);
+// }
+
+let obj2 = {
+  1: "name",
+  2: "surname",
+  3: "age",
+  [Symbol.iterator]() {
+    return {
+      count: 1,
+      next() {
+        if(this.count < 4) {
+          return {done: false, value: this.count++};
+        } else {
+          return {done: true};
+        };
+      },
+    };
+  },
+};
+
+obj2.tellName = function() {
+  console.log(this["1"]);
+};
+
+// for(let key of obj2) {
+//   console.log(key);
+// }
+
+obj2.tellName();
+
+// pseudo-array, cannot be iterated with for...of. Should add [Symbol.iterator] at first.
+let obj3 = {
+  0: "Hello",
+  1: "World",
+  length: 2,
+};
+
+// for (let key in obj3) {
+//   console.log(obj3[key]);
+// }
+
+// use Array.from() to create an array from pseudo-arrays and iterable objects! 
+
+
+let range = {
+  from: 1,
+  to: 5,
+  [Symbol.iterator]() {
+    return {
+      current: this.from,
+      last: this.to,
+      next() {
+        if(this.current <= this.last) {
+          return {done: false, value: this.current++};
+        } else {
+          return {done: true};
+        };
+      },
+    };
+  },
+};
+
+let arrayLike = {
+  0: "Hello",
+  1: "World",
+  length: 2,
+};
+
+
+let arr = Array.from(arrayLike);
+let arr2 = Array.from(range);
+console.log(arr);
+console.log(arr2);
