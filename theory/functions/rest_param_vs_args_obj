@@ -1,0 +1,64 @@
+//arguments object vs spread operator
+/*
+function showArguments1(...args) {
+  console.log(args);
+}
+
+function showArguments2() {
+  console.log(arguments);
+}
+
+showArguments1('a', 'b');
+showArguments2('a', 'b');
+*/
+
+
+// arguments object 
+/*
+function outerFunction(innerFunction) {
+  return function() {
+    console.log(arguments);
+    return innerFunction(...arguments);
+  };
+}
+
+function innerFunction(a, b) {
+  console.log(a + b);
+}
+
+const newFunction = outerFunction(innerFunction);
+newFunction(3, 4);
+*/
+
+
+//spread operator
+
+function outerFunction(innerFunction) {
+  return function(...args) {
+    console.log(...args);
+    console.log(args);
+    return innerFunction(...arguments);
+  }
+}
+
+function innerFunction(a, b) {
+  console.log(a + b);
+}
+
+let newFunction = outerFunction(innerFunction);
+newFunction(3, 4);
+
+
+/*
+Breakdown of the flow:
+
+outerFunction is called with innerFunction as an argument.
+outerFunction returns a new function. This returned function has access to arguments (which are the values passed to it).
+When you call newFunction(3, 4), it executes the returned function, and within that, the arguments (3, 4) are logged and passed to the innerFunction.
+
+How the return function receives the arguments:
+
+The returned function can receive arguments because it's essentially a closure (a function that remembers the environment in which it was created).
+When you invoke the returned function, the arguments you pass to it get captured by the arguments object inside that function.
+You can pass those arguments along to any other function (in this case, innerFunction).
+*/

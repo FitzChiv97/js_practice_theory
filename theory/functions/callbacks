@@ -1,0 +1,27 @@
+/*
+Callbacks allow to achieve asynchronuos.
+It's simply a func that is invoked after smth else happens.
+We're passing a func into another func, and then the func we passed in is called back (executed) after smth else has occured.
+*/
+
+
+
+let logCall = function() {
+  console.log('logCall was called back.')
+};
+let timerId = setTimeout(logCall, 5000);
+console.log(timerId);
+// logCall here is a callback, it won't be executed until the event has happened
+
+
+
+/*
+In this example we define a func before passing it into another func.
+We can also define a func at the time we pass it to the func - anonymous.
+This is a standart way of doing this type of thing in JS.
+*/
+
+// setTimeout(function() {
+//   console.log('the function was called');
+// }, 5000);
+//this is a FE included when we call setTimeout func

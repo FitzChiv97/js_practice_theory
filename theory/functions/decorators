@@ -1,0 +1,34 @@
+// We'll pass a func into a decoratorFunction, it'll return a new func.
+// A new function is going to use try...catch when its invoked.
+
+// Let's assume that this might be a decoder for some funcs to be used in 
+// certain situations that may have an error and we don't want to kill the code.
+
+const errorDecorator = function(fn) {
+  return function(...args) {
+    try {
+      console.log('Running function ' + fn.name);
+      //log out that we're running the func
+      
+      fn(...args);
+      //invoke that func, it was passed as an arg into errorDecorator
+      
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+};
+
+// We know that the string passed in is a valid JSON, but sometimes the input might be invalid.
+function parse(str) {
+  let obj = JSON.parse(str);
+  console.log(obj);
+  return obj;
+}
+// We can modify this func or we can just use a decorator to inhanse this func.
+
+const parseError = errorDecorator(parse);
+// This is going to be the parseFunc being able to handle the errors.
+
+console.log(parseError('[]'));
+// We'll get the warning, but the code is running after this; parseError is now an enhanced function because of the decorator function!
