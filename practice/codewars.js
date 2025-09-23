@@ -3039,3 +3039,33 @@ const greetDevelopers = list => list.map(
 //   return new Set(str).size === str.length;
 // }
 // console.log(hasUniqueChars("abcdef"));
+
+
+// Sum even numbers
+// function sumEvenNumbers(input) {
+//   return input.reduce((sum, num) => {
+//     return sum + (num % 2 ? 0: num);
+//   }, 0);
+// }
+// console.log(sumEvenNumbers([4, 3, 1, 2, 5, 10, 6, 7, 9, 8]));
+
+
+// // Sum of array singles
+// function repeats(arr){
+//   return arr
+//     .filter((el, _, array) => array.lastIndexOf(el) == array.indexOf(el))
+//     .reduce((sum, el) => sum + el, 0);
+// };
+
+// console.log(repeats([4,5,7,5,4,8]));
+
+let date1 = new Date('2025-09-18');
+console.log(date1);
+
+let date2 = new Date('2025-09-17');
+console.log(date2);
+
+console.log(date1 - date2);
+
+let date3 = new Date(date1 - date2);
+console.log(date3);

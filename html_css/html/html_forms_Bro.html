@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <form action="action_page.php" method="POST">
+    
+    <!-- 
+    GET is useful for search boxes for example, 
+    if the user needs to navigate the webpage
+    for some sort of keyword
+    -->
+    
+    <div>
+     <label for="fname">first name:</label>
+     <input id="fname" type="text" name="fname" placeholder="Spongebob" required>
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="lname">last name:</label>
+     <input id="lname" type="text" name="lname" placeholder="Squarepants">
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="pass">password:</label>
+     <input id="pass" type="password" name="pass" maxlength="12" required>
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="email">email:</label>
+     <input id="email" type="email" name="email" placeholder="spants@gmail.com">
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="phone">phone #:</label>
+     <input id="phone" type="tel" name="phone" placeholder="(123)-456-7890">
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="bdate">bdate:</label>
+     <input id="bdate" type="date" name="bdate">
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="qty">qty:</label>
+     <input id="qty" type="number" name="qty" min="0" max="99" value="1">
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="title">title:</label>
+    
+     <label for="Mr.">Mr.</label>
+     <input id="Mr." type="radio" name="title" value="Mr.">
+     
+     <label for="Mrs.">Mrs.</label>
+     <input id="Mrs." type="radio" name="title" value="Mrs.">
+     
+     <label for="PhD.">PhD.</label>
+     <input id="PhD." type="radio" name="title" value="PhD.">
+    </div>
+    
+    <!-- 
+    to set all radio within the same group give them the same name
+    -->
+    
+    <br>
+    
+    <div>
+     <label for="payment">payment</label>
+     <select id="payment" name="payment">
+      <option value="visa">visa</option>
+      <option value="mactercard">mastercard</option>
+      <option value="giftcard">giftcard</option>
+     </select>
+    </div>
+    
+    <br>
+    
+    <div>
+     <label for="subscribe">subscribe:</label>
+     <input id="subscribe" type="checkbox" name="subscribe">
+    </div>
+    
+    <br>
+    
+    <div>
+     <input type="reset">
+    </div>
+    
+    <br>
+    
+    <div>
+     <input type="submit">
+    </div>
+    
+    </form>
+    
+    <!-- for should be equal to id! -->
+  </body>
+</html>

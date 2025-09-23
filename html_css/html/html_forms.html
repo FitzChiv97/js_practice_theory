@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Forms</title>
+  </head>
+
+  <!-- if you don't give a value to a name attribute, the input field won't be sent to the server!-->
+
+  <!-- method attribute of a <form> el specifies how data from the form is sent to the server: GET or POST -->
+
+  <!-- GET: 
+    1. use for sending non-sensitive info 
+    2. has a character limit (unsutable for sending large data)
+    3. doesn't modify server's state
+    4. used for retrieving information
+    5. requests can be cached by the browser
+  -->
+
+  <!-- POST: 
+    1. sensitive info is not visible in URL (save to send)
+    2. no character limit 
+    3. send data to a server to create or update a resource
+    4. suitable for actions that modify the server's state
+    5. requests are not easily cached by the browser
+  -->
+    
+  <body>
+    <!-- creating a shell for all forms -->
+    <form action="#" method="post" enctype="multipart/form-data">
+      <!-- all forms should be placed INSIDE <form> tag-->
+      <div>
+        <p>Name</p>
+        <input placeholder="name" tabindex="1" name="username" type="text">
+      </div>
+
+      <div>
+        <p>Password</p>
+        <input placeholder="password" tabindex="2" name="userpass" type="password">
+      </div>
+
+      <div>
+        <p>Phone number</p>
+        <input tabindex="3" name="userphone" type="tel">
+      </div>
+      <!-- switches to nums keyboard on mobile devices -->
+
+      <div>
+        <p>Gender</p>
+        <div>
+          <input tabindex="4" checked type="radio" name="gender" value="male"> Male
+        </div>
+        <div>
+          <input tabindex="4" type="radio" name="gender" value="female"> Female
+        </div>
+        <!-- checked attribute selects radio/checkbox input by default -->
+        <!-- tabindex is the same for radio type beacuse it has the same name-->
+      </div>
+
+      <div>
+        <p>Property</p>
+        <div>
+          <input tabindex="5" checked type="checkbox" name="house" value="yes"> House
+        </div>
+        <div>
+          <input tabindex="6" type="checkbox" name="car" value="yes"> Car
+        </div>
+        <div>
+          <input tabindex="7" disabled type="checkbox" name="computer" value="yes"> Computer
+        </div>
+      </div>
+
+      <div>
+        <p>Additional info</p>
+        <textarea tabindex="8" name="text"></textarea>
+      </div>
+
+      <div>
+        <p>Attach photo</p>
+        <input tabindex="9" type="file" name="userphoto">
+      </div>
+
+      <div>
+        <p>Choose color</p>
+        <select tabindex="10" name="color">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option selected value="blue">Blue</option>
+        </select>
+      </div>
+      <!-- selected attribute chooses any option by default -->
+
+      <div>
+        <p>Action</p>
+        <button tabindex="11" type="submit">Send</button>
+        <button tabindex="12" type="reset">Reset</button>
+      </div>
+
+    </form>
+  </body>
+</html>
