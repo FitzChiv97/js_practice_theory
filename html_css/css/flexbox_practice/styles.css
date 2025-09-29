@@ -1,20 +1,193 @@
+/* 
+To make a flex container take up the entire height of the webpage:
+
+1. Ensure html and body elements have 100% height!
+
+The body element, by default, does not take up the full height of the viewport. 
+To allow its child elements (including your flex container) to inherit and expand 
+based on its height, you must explicitly set height: 100% on both the html and body elements. 
+
+2. Additionally, removing the default margin on the body is often recommended for full-page layouts.
+*/
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+html,body{
+	height: 100%;
+	width: 100%;
+}
+
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+
   min-height: 100%;
+  overflow: hidden;
 }
+
+/* ---------------HEADER-FOOTER-CONTENT-CONTAINERS---------------- */
 
 .container {
   max-width: 1180px;
-  margin: 0 auto;
+  margin: 0px auto;
 }
+
+/* 
+containers inside header, content, footer 
+should limit the width of their content part
+*/
 
 .content {
+  flex: 1 1 auto;
+}
+
+/* 
+let the content-element (main-body of the page) 
+to take all free space of its flex-container
+*/
+
+/* ---------------BLOCK-HI----------------- */
+
+.hi {
+  background-color: #445162;
+  padding: 50px 0;
 
 }
 
-img {
-  width: 250px;
+.hi__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hi__body {
+  color: white;
+  padding: 0 30px 0 0;
+}
+
+.hi__title {
+  font-size: 60px;
+  text-shadow: 1px 1px 0 rgba(0, 0 , 0, 0.3);
+  margin-bottom: 38px;
+}
+
+.hi__list {
+  list-style-type: none;
+}
+
+.hi__list li {
+  background: url(/html_css/css/flexbox_practice/icons/check_mark.svg) 0 0 no-repeat;
+  padding: 0 0 0 30px;
+  line-height: 22px;
+  font-size: 20px;
+  text-shadow: 1px 1px 0 rgba(0, 0 , 0, 0.3);
+  margin-bottom: 15px;
+}
+
+.hi__list li:last-child {
+  margin: 0;
+}
+
+.hi__image img {
+  height: 250px;
+  width: 400px;
+  object-fit: cover;
+}
+
+/* -----------------BLOCK-WHAT-------------------- */
+
+.what {
+  padding: 50px 0;
+}
+
+.what__row {
+  display: flex;
+}
+
+/* making image element container rigid */
+.what__image {
+  flex: 0 0 350px;
+}
+
+/* 
+here is an example of a fixated block:
+even if the img's width is more than its container's width
+it won't be bigger because of the max-width property -
+it takes 100% of the space of .what__image block
+*/
+.what__image img {
+  max-width: 100%;
+  height: 220px;
+  width: 450px;
+  object-fit: cover;
+}
+
+/* making text element container flexible */
+.what__body {
+  flex: 1 1 auto;
+  padding: 0px 0px 0px 38px;
+}
+
+.title {
+  color: #445161;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.what__title {
+  margin: 0px 0px 33px 0px;
+}
+
+.what__text {
+  color: #333333;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.what__text p:first-child {
+  margin: 0px 0px 25px 0px;
+}
+
+/* -----------------BLOCK-WHAT-------------------- */
+
+.columns {}
+.columns__title {
+  text-align: center;
+  margin: 0px 0px 30px 0px; 
+}
+
+.columns__row {}
+.columns__column {}
+
+.columns__item {}
+.item {}
+.item__row {}
+.item__image {}
+.item__body {}
+.item__title {}
+.item__text {}
+
+/* -----------------FOOTER-------------------- */
+.footer{
+  background-color: #f5f5f5;
+}
+
+.footer__row {
+  display: flex;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__text {
+  color: #445162;
+  font-size: 12px;
+  letter-spacing: 0.3px;
 }
