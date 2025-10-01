@@ -172,11 +172,11 @@ it takes 100% of the space of .what__image block
 .columns__row {
   display: flex;
   flex-wrap: wrap;
-  /* margin: 0px -8px; */
+  margin: 0px -8px;
 }
 
 .columns__column {
-  /* padding: 0px 8px; */
+  padding: 0px 8px;
   flex: 0 1 50%;
   margin: 0px 0px 30px 0px;
 }
@@ -213,17 +213,81 @@ it takes 100% of the space of .what__image block
 
 /* -----------------BLOCK-VERTICAL-------------------- */
 
-.vertical {}
-.container {}
-.vertical__title {}
-.vertical__body {}
-.vertical__row {}
-.vertical__column {}
-.vertical__item {}
-.vertical__subtitle {}
-.vertical__label {}
-.vertical__text {}
-.vertical__btn {}
+.vertical {
+  padding: 50px 0;
+}
+
+.vertical__title {
+  text-align: center;
+  margin: 0px 0px 30px 0px;
+}
+
+.vertical__body {
+  max-width: 990px;
+  margin: 0px auto;
+}
+
+/* creating a padding of 45px on right & left for vertical__columns*/
+.vertical__row {
+  display: flex;
+  margin: 0px -22.5px;
+}
+
+.vertical__column {
+  flex: 0 1 33.333%;
+  padding: 0px 22.5px;
+  display: flex;
+}
+
+.vertical__item {
+  background-color: #445162;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #445162;
+  padding: 0px 0px 20px 0px;
+}
+
+.vertical__subtitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 12px 0px;
+}
+
+.vertical__label {
+  text-align: center;
+  background-color: #fff;
+  font-size: 40px;
+  color: #445162;
+  padding: 15px 0px;
+}
+
+.vertical__text {
+  padding: 20px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.vertical__text p {
+  margin: 0px 0px 15px 0px;
+}
+.vertical__text p:last-child {
+  margin: 0px;
+}
+
+.vertical__btn {
+  display: block;
+  margin: 0px 20px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #fff;
+  color: #445161;
+  font-size: 18px;
+  border-radius: 5px;
+  text-decoration: none;
+}
 
 /* -----------------FOOTER-------------------- */
 .footer{
