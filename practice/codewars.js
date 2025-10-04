@@ -3059,13 +3059,26 @@ const greetDevelopers = list => list.map(
 
 // console.log(repeats([4,5,7,5,4,8]));
 
-let date1 = new Date('2025-09-18');
-console.log(date1);
 
-let date2 = new Date('2025-09-17');
-console.log(date2);
+// WeIrD StRiNg CaSe (2 solutions)
+// function toWeirdCase(string) {
+//   return string
+//     .split(' ')
+//     .map(word => {
+//       let weird = '';
+//       for(let i = 0; i < word.length; i++) {
+//         weird += (i % 2)? word[i].toLowerCase(): word[i].toUpperCase();
+//       }
+//       return weird;
+//     })
+//     .join(' ');  
+// }
 
-console.log(date1 - date2);
-
-let date3 = new Date(date1 - date2);
-console.log(date3);
+function toWeirdCase(string) {
+  return string.split(' ').map(word => {
+    return word.split('').map((letter, id) => {
+      return (id % 2)? letter.toLowerCase(): letter.toUpperCase();
+    }).join('');
+  }).join(' ');
+}
+console.log(toWeirdCase("This is a test"));
