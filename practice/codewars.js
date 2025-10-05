@@ -3074,11 +3074,11 @@ const greetDevelopers = list => list.map(
 //     .join(' ');  
 // }
 
-function toWeirdCase(string) {
-  return string.split(' ').map(word => {
-    return word.split('').map((letter, id) => {
-      return (id % 2)? letter.toLowerCase(): letter.toUpperCase();
-    }).join('');
-  }).join(' ');
-}
-console.log(toWeirdCase("This is a test"));
+// function toWeirdCase(string) {
+//   return string.split(' ').map(word => {
+//     return word.split('').map((letter, id) => {
+//       return (id % 2)? letter.toLowerCase(): letter.toUpperCase();
+//     }).join('');
+//   }).join(' ');
+// }
+// console.log(toWeirdCase("This is a test"));
