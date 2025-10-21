@@ -3082,3 +3082,19 @@ const greetDevelopers = list => list.map(
 //   }).join(' ');
 // }
 // console.log(toWeirdCase("This is a test"));
+
+
+//Sum of numbers from 0 to N
+let SequenceSum = (function() {
+  function SequenceSum() {}
+
+  SequenceSum.showSequence = function(count) {
+
+  };
+
+  return SequenceSum;
+})();
+
+console.log(SequenceSum(6));
+
+//another test commit from linux
