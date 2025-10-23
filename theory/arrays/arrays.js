@@ -112,3 +112,4 @@ let obj = {
 console.log(Array.from(obj));
 console.log(Array(...Array(3)));
 console.log([...Array(3)]);
+console.log(Array.from({length: 3}));

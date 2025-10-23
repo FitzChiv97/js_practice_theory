@@ -3084,25 +3084,48 @@ const greetDevelopers = list => list.map(
 // console.log(toWeirdCase("This is a test"));
 
 //Sum of numbers from 0 to N
+// let SequenceSum = function() {
+//   function SequenceSum() {}
 
-let SequenceSum = function() {
-  function SequenceSum() {}
+//   SequenceSum.showSequence = function(count) {
+//     if(!count) return '0=0';
+//     else if (count < 0) return `${count}<0`;
+//     else {
+//       let arr = Array.from(Array(++count), el => null);
+//       arr = arr.map((el, i) => {
+//         return el = i;
+//       })
+//       let sum = arr.reduce((sum, el) => sum += el, 0);
+//       return arr.join('+') + ` = ${sum}`;
+//     }
+//   };
 
-  SequenceSum.showSequence = function(count) {
-    if(!count) return '0=0';
-    else if (count < 0) return `${count}<0`;
-    else {
-      let arr = Array.from(Array(++count), el => null);
-      arr = arr.map((el, i) => {
-        return el = i;
-      })
-      let sum = arr.reduce((sum, el) => sum += el, 0);
-      return arr.join('+') + ` = ${sum}`;
-    }
-  };
+//   return SequenceSum;
+// }();
+// console.log(SequenceSum.showSequence(6));
+// console.log(SequenceSum.toString());
 
-  return SequenceSum;
-}();
 
-console.log(SequenceSum.showSequence(6));
-console.log(SequenceSum.toString());
+// Boiled Eggs
+// let cookingTime = eggs => Math.ceil(eggs / 8) * 5;
+// console.log(cookingTime(17));
+
+
+//Simple remove duplicates (3 solutions!) Set,filter
+// function solve(arr) {
+//   arr.forEach((el, id) => {
+//     if (arr.indexOf(el) !== arr.lastIndexOf(el)) {
+//       arr.splice(arr.indexOf(el), 1, null);
+//     }
+//   })
+//   return arr.filter(el => el !== null);
+// }
+// console.log(solve([1,2,1,2,1,2,3]));
+
+
+// Palindrome chain length (recursion)
+// function palindromeChainLength(n) {
+//   let reversedNum = +n.toString().split('').reverse().join('');
+//   return (n == reversedNum)? 0: 1 + palindromeChainLength(n += reversedNum);
+// }
+// console.log(palindromeChainLength(87));
