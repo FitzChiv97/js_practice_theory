@@ -4,7 +4,7 @@ function toBinary(decimal) {
   let binary = '';
 
   while(decimal > 0) {
-    binary = (decimal % 2) + binary;
+    binary += (decimal % 2);
     console.log(`binary: ${binary}`);
 
     decimal = Math.floor(decimal / 2);

@@ -3129,3 +3129,36 @@ const greetDevelopers = list => list.map(
 //   return (n == reversedNum)? 0: 1 + palindromeChainLength(n += reversedNum);
 // }
 // console.log(palindromeChainLength(87));
+
+
+// Multiplication table
+// function multiplicationTable(size) {
+//   return Array.from(Array(size), (_, id) => {
+//     let arr = Array.from({length: size});
+
+//     arr = arr.map((_,numId) => {
+//       return (numId+1) * (id+1); 
+//     })
+
+//     return arr;
+//   });
+// }
+// console.log(multiplicationTable(9));
+
+
+// Make the Deadfish Swim
+// function parse(data) {
+//   let arr = [];
+
+//   data.split('').reduce((v, c) => {
+//     if (c == 'i') v++;
+//     if (c == 'd') v--;
+//     if (c == 's') v*=v;
+//     if (c == 'o') arr.push(v);
+
+//     return v;
+//   }, 0);
+
+//   return arr; 
+// }
+// console.log(parse("iiisdosodddxxxddiso"));

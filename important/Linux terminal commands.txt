@@ -1,0 +1,69 @@
+/*            working with directories         */
+
+/*
+josh@ubuntu20:~$ - where you are, currently in a home directory
+man - manual
+man man
+man cd
+man pwd
+pwd - print name of current working directory
+josh@ubuntu20:~$ pwd
+
+          absolute path vs relative path
+absolute path - is the full location to the file/folder/directory
+(ex) - /home/josh
+relative path - is an assumed path, the system understands where I am 
+(ex) - josh@ubuntu20:~$
+
+cd - change directory
+cd /home
+josh@ubuntu20: /home$ - the tilde is gone,
+it shows the actual location where I located
+
+          Key Differences and Use Cases:
+
+Starting Point: Absolute paths start from the root (/),
+while relative paths start from the current working directory.
+
+Consistency: Absolute paths are always consistent,
+while relative paths change depending on your location.
+
+Convenience: Relative paths are often more convenient
+for navigating within a localized part of the filesystem,
+as they are shorter and easier to type.
+
+Clarity: Absolute paths offer clear and precise
+location information, useful in scripts or when
+referring to files outside the immediate vicinity.
+
+
+Special Relative Path Notations:
+. (dot): Represents the current directory.
+.. (dot-dot): Represents the parent directory.
+~ (tilde): Represents the current user's home directory.
+ 
+ls .   - list contents of the current directory
+cd ..  - go up one level to the parent directory
+cd ~   - go to the user's home directory
+
+cd - will take you to home directory by default no matter where you're
+ls - list directory contents
+
+hidden files on linux has period (.) in front of their names
+ls -a - list ALL files
+clear - moves everything up in the terminal
+ls -l - list a LONG view (show more info on the listed files)
+ls -la 
+ls -lah - puts things in a human readable format
+
+mkdir Name - make directories
+mkdir -p Linux/Ubuntu/josh- create BOTH parent and child directories
+(full directory tree)
+rmdir Name- remove EMPTY directory
+rmdir -p Linux/Ubuntu/josh - remove WHOLE directory tree
+*/
+
+/*            working with files                */
+/*
+
+*/
