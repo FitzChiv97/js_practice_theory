@@ -3162,3 +3162,53 @@ const greetDevelopers = list => list.map(
 //   return arr; 
 // }
 // console.log(parse("iiisdosodddxxxddiso"));
+
+
+//Scramblies
+function scramble(str1, str2) {
+  let obj = {};
+
+  for(let char of str2) {
+    (char in obj)? obj[char] += 1: obj[char] = 1;
+  }
+
+  console.log(obj);
+  //created an obj with character count of str2
+
+  let set = new Set(str1);
+  
+  set.forEach(char => {
+    if(!(char in obj)) set.delete(char);
+  })
+
+  console.log(set);
+  //removed chars that are not in str2
+
+  if (set.size < Object.keys(obj).length) return false;
+
+  /*
+  for (let char of set) { 
+    console.log(char);
+    let count = str1.split('').filter(el => el === char).length;
+    if (count < obj[char]) return false;
+  }
+  */
+
+  let arr = str1.split('');
+  console.log(arr);
+
+  for (let char of set) { 
+    let count = 0;
+    
+    while (count <= obj[char]) {
+      if(arr.indexOf(char) !== -1) {
+        arr.splice(arr.indexOf(char), 1);
+        count++;
+      }
+      if (count < obj[char]) return false;
+    }
+  }
+
+  return true;
+}
+console.log(scramble('javasssttppp', 'jjavas'));
