@@ -3164,51 +3164,59 @@ const greetDevelopers = list => list.map(
 // console.log(parse("iiisdosodddxxxddiso"));
 
 
-//Scramblies
-function scramble(str1, str2) {
-  let obj = {};
+//Scramblies(2 solutions)
+// function scramble(str1, str2) {
+//   let obj = {};
 
-  for(let char of str2) {
-    (char in obj)? obj[char] += 1: obj[char] = 1;
-  }
+//   for(let char of str2) {
+//     (char in obj)? obj[char] += 1: obj[char] = 1;
+//   }
 
-  console.log(obj);
-  //created an obj with character count of str2
+//   console.log(obj);
+//   //created an obj with character count of str2
 
-  let set = new Set(str1);
+//   let set = new Set(str1);
   
-  set.forEach(char => {
-    if(!(char in obj)) set.delete(char);
-  })
+//   set.forEach(char => {
+//     if(!(char in obj)) set.delete(char);
+//   })
 
-  console.log(set);
-  //removed chars that are not in str2
+//   console.log(set);
+//   //removed chars that are not in str2
 
-  if (set.size < Object.keys(obj).length) return false;
+//   if (set.size < Object.keys(obj).length) return false;
 
-  /*
-  for (let char of set) { 
-    console.log(char);
-    let count = str1.split('').filter(el => el === char).length;
-    if (count < obj[char]) return false;
-  }
-  */
+//   for (let char of set) { 
+//     console.log(char);
+//     let count = str1.split('').filter(el => el === char).length;
+//     if (count < obj[char]) return false;
+//   }
 
-  let arr = str1.split('');
-  console.log(arr);
+//   return true;
+// }
 
-  for (let char of set) { 
-    let count = 0;
-    
-    while (count <= obj[char]) {
-      if(arr.indexOf(char) !== -1) {
-        arr.splice(arr.indexOf(char), 1);
-        count++;
-      }
-      if (count < obj[char]) return false;
-    }
-  }
+// function scramble(str1, str2) {
+//   let occurences = str1.split("").reduce((arr, cur) => { 
+//     arr[cur] ? arr[cur]++ : arr[cur] = 1;
+//     return arr; 
+//   }, {});
 
-  return true;
+//   return str2.split("").every((character) => {
+//     return --occurences[character] >= 0;
+//   });
+// }
+// console.log(scramble('javasssttppp', 'jjavas'));
+
+// Title Case
+function titleCase(title, minorWords) {
+  let exceptions = minorWords ? minorWords.toLowerCase().split(' '): [];
+  
+  return title.toLowerCase().split(' ').reduce((str, word, id) => {
+    return str += (!exceptions.includes(word) || id == 0)? word[0].toUpperCase() + word.slice(1) + ' ':
+    word + ' ';
+  }, '');
 }
-console.log(scramble('javasssttppp', 'jjavas'));
+console.log(titleCase('', ''));
+console.log(titleCase('a clash of KINGS', 'a an the of'));
+console.log(titleCase('THE WIND IN THE WILLOWS', 'The In'));
+console.log(titleCase('the quick brown fox'));
