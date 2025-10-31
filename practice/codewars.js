@@ -3207,16 +3207,29 @@ const greetDevelopers = list => list.map(
 // }
 // console.log(scramble('javasssttppp', 'jjavas'));
 
+
 // Title Case
-function titleCase(title, minorWords) {
-  let exceptions = minorWords ? minorWords.toLowerCase().split(' '): [];
+// function titleCase(title, minorWords) {
+//   // if (!title) return title;
+//   let exceptions = minorWords ? minorWords.toLowerCase().split(' '): [];
   
-  return title.toLowerCase().split(' ').reduce((str, word, id) => {
-    return str += (!exceptions.includes(word) || id == 0)? word[0].toUpperCase() + word.slice(1) + ' ':
-    word + ' ';
-  }, '');
-}
-console.log(titleCase('', ''));
-console.log(titleCase('a clash of KINGS', 'a an the of'));
-console.log(titleCase('THE WIND IN THE WILLOWS', 'The In'));
-console.log(titleCase('the quick brown fox'));
+//   return title.toLowerCase().split(' ').reduce((str, word, id) => {
+//     return str += (!exceptions.includes(word) || id == 0)? word[0].toUpperCase() + word.slice(1) + ' ':
+//     word + ' ';
+//   }, '').trim();
+// }
+// console.log(titleCase('a clash of KINGS', 'a an the of'));
+
+// console.log('180'.charCodeAt(0));
+// console.log('180'.charCodeAt(0));
+
+// Weight for weight
+// function orderWeight(str) {
+//   return str.trim().split(/\s+/).sort((a,b) => {
+//     let sumA = a.split('').reduce((sum, el) => sum += Number(el), 0);
+//     let sumB = b.split('').reduce((sum, el) => sum += Number(el), 0);
+
+//     return (sumA - sumB == 0)? a.localeCompare(b): sumA - sumB;
+//   }).join(' ');
+// }
+// console.log(orderWeight("  103 123  4444 99   2000   ")); 
