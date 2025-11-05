@@ -3233,3 +3233,50 @@ const greetDevelopers = list => list.map(
 //   }).join(' ');
 // }
 // console.log(orderWeight("  103 123  4444 99   2000   ")); 
+
+//A wolf in sheep's clothing
+// function warnTheSheep(queue) {
+//   return (queue.indexOf('wolf') == queue.length - 1) ? 
+//   "Pls go away and stop eating my sheep":
+//   `Oi! Sheep number ${queue.length - (queue.indexOf('wolf') + 1)}! You are about to be eaten by a wolf!`;
+// }
+// console.log(warnTheSheep(["sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
+
+
+//File Finder
+let directory = {
+  'New folder': {
+    'New folder': {}
+  },
+  'New folder (1)': {
+    'New folder': {
+      'funnyjoke.txt': 'lol i pranked you!!!',
+    }
+  },
+  'New folder (2)': {},
+  'funnyjoke.txt': 'lol i pranked you!!!',
+};
+
+function search(directory) {
+  // if(Object.keys(directory).length !== 0) {
+
+  // }
+  // throw new Error('No files!');
+}
+
+// console.log(search(directory)); // New folder (1)/New folder/funnyjoke.txt
+
+let dir = {
+  'folder':{},
+  'folder(1)':{'folder':{},'folder(1)':{},},
+  'folder(2)':{'folder':{'folder':{},'joke.txt':'text'},'folder(1)':{}},
+  'folder(3)':{},
+}
+// console.log(dir['folder(2)']['folder']['joke.txt']);
+
+
+//Range Extraction
+function solution(list){
+ // TODO: complete solution 
+}
+console.log(solution[[-10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]]);
