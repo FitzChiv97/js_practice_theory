@@ -3223,6 +3223,7 @@ const greetDevelopers = list => list.map(
 // console.log('180'.charCodeAt(0));
 // console.log('180'.charCodeAt(0));
 
+
 // Weight for weight
 // function orderWeight(str) {
 //   return str.trim().split(/\s+/).sort((a,b) => {
@@ -3233,6 +3234,7 @@ const greetDevelopers = list => list.map(
 //   }).join(' ');
 // }
 // console.log(orderWeight("  103 123  4444 99   2000   ")); 
+
 
 //A wolf in sheep's clothing
 // function warnTheSheep(queue) {
@@ -3309,33 +3311,118 @@ let dir = {
 
 
 // Valid Braces
-function validBraces(braces){
-  let validBraces = ['()','[]','{}'];
+// function validBraces(braces){
+//   let validBraces = ['()','[]','{}'];
 
-  function removeBraces(braces, validBracesId) {
-    braces = braces.split('');
-    braces.splice(validBracesId, 2);
-    return braces.join('');
-  }
+//   function removeBraces(braces, validBracesId) {
+//     braces = braces.split('');
+//     braces.splice(validBracesId, 2);
+//     return braces.join('');
+//   }
 
-  while (braces.length > 0) {
-    let validBracesId = -1;
+//   while (braces.length > 0) {
+//     let validBracesId = -1;
 
-    console.log(braces);
+//     for(let el of validBraces) {
+//       if (braces.indexOf(el) > -1) {
+//         validBracesId = braces.indexOf(el);
+//         braces = removeBraces(braces, validBracesId);
+//       };
+//     }
 
-    for(let el of validBraces) {
-      if (braces.indexOf(el) > -1) {
-        validBracesId = braces.indexOf(el);
-        braces = removeBraces(braces, validBracesId);
-      };
+//     if (validBracesId < 0) return false;
+//   }
+
+//   return true;
+// }
+// console.log(validBraces('([{}])'));
+
+
+// Next bigger number with the same digits
+function nextBigger(n) {
+  let nums = Array.from(String(n), num => Number(num));
+  console.log(nums);
+  let bigNums = [];
+  
+  for(let i = 0; i < nums.length; i++) {
+    let copiedNums = [...nums];
+    let baseNum = copiedNums.splice(i, 1).join();
+    let rearrangedNum = [];
+
+    for(let j = 0; j < copiedNums.length; j++) {
+      rearrangedNum = [baseNum, copiedNums.push(copiedNums.shift())];
+      bigNums.push(rearrangedNum.join());
+      rearrangedNum = [];
     }
 
-    console.log(validBracesId);
-    console.log(braces);
-
-    if (validBracesId < 0) return false;
+    console.log(bigNums);
   }
 
-  return true;
+  // console.log(bigNums);
+
+  // if (bigNums.every(el => !(el % n))) return -1;
+
+  // let firstBigNum = Number(bigNums.sort((a,b) => (n-a) - (b-a)).find(num => num > n));
+
+  // return firstBigNum ? firstBigNum: -1;
 }
-console.log(validBraces('([{}])'));
+
+// console.log(nextBigger(2017));
+// console.log(nextBigger(111));
+// console.log(nextBigger(531));
+// console.log(nextBigger(9));
+
+// console.log(nextBigger(1897));
+
+// 1897(expected 1987 => 1978) 
+// 2890(expected 2980 => 2908)
+
+
+// String matchup (2 solutions)
+// function solve(a,b) {
+//   return b.map(el => {
+//     return a.reduce((sum, curEl) => {
+//       return sum += (curEl === el)? 1:0;
+//     }, 0);
+//   })
+// }
+
+// function solve(a,b) {
+//   return b.map(el => a.filter(curr => el === curr).length);
+// }
+// console.log(solve(['abc', 'abc', 'xyz', 'cde', 'uvw'], ['abc', 'cde', 'uap']));
+
+
+// Simple string reversal II (2 solutions)
+// function solve(st, a, b) {
+//   let word = st.split('');
+
+//   let reversed = word.slice(a, b+1).reverse().join('');;
+
+//   word.splice(a, Math.abs(a-b)+1, reversed);
+//   return word.join('');
+// }
+
+// const solve = (st,a,b) => st.slice(0,a) + 
+// st.slice(a,b+1).split('').reverse().join('') + st.slice(b+1);
+
+// console.log(solve('FunctionalProgramming', 2, 15));
+
+
+//The Wide-Mouthed frog!
+// const mouthSize = animal => animal.toLowerCase() === 'alligator' ? 'small': 'wide';
+
+
+//Remove an exclamation mark from the end of string (2 solutions)
+// const remove = (string) => (string[string.length - 1] === "!") ? string.slice(0, string.length - 1): string;
+// const remove = (str) => str.endsWith('!')? str.slice(0, -1): str;
+// console.log(remove('hi!! Hi!!!'));
+
+
+//Merge two sorted arrays into one
+// function mergeArrays(arr1, arr2) {
+//   return [...arr1, ...arr2]
+//    .sort((a,b) => a - b)
+//    .filter((el,id,arr) => el !== arr[id+1]);
+// }
+// console.log(mergeArrays([1,2,5,4,12], [5,3,6,7,8,10]));
