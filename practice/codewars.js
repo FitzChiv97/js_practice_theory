@@ -3507,10 +3507,37 @@ function nextBigger(n) {
 // console.log(reverse('word'.split('')));
 /*The comma concatenates the statements and runs them both, but only returns the result of the last one, this accomplishes the same as writing {a.push(v); return a;}*/
 
-function reverse(array) {
-  return array.reduce(function(a, b) {
-    console.log(a);
-    return [b].concat(a);
-  }, []);
-}
-console.log(reverse('word'.split('')));
+
+//Halving Sum(2 solutions)
+// const halvingSum = n => n += (!Math.floor(n/2))? 0: halvingSum(Math.floor(n/2));
+// let halvingSum = n => n += (n > 1)? halvingSum(parseInt(n/2)): 0;
+// console.log(halvingSum(25));
+
+
+// Automorphic Number 
+// function automorphic(n) {
+//   return `${n ** 2}`.endsWith(n)? "Automorphic": "Not!!";
+// }
+// console.log(automorphic(100));
+
+
+//max diff - easy (2 solutions)
+// function maxDiff(list) {
+//   let sorted = list.sort((a,b) => a - b);
+//   if (sorted.length > 1) return sorted.pop() - sorted.shift();
+//   else return 0;
+// }
+
+// function maxDiff(list) {
+//   return list.length? Math.max(...list) - Math.min(...list): 0; 
+// }
+// console.log(maxDiff([1, 2, 3, -4]));
+
+
+//Sum of Odd Cubed Numbers
+// function cubeOdd(arr) {
+//   return (arr.some(el => typeof el !== 'number'))? undefined:
+//   arr.map(el => el ** 3).filter(el => el % 2).reduce((acc, el) => acc+=el,0);
+// }
+// console.log(cubeOdd([1, 2, 3, 4]));
+console.log(isNaN('a'))
