@@ -3540,4 +3540,31 @@ function nextBigger(n) {
 //   arr.map(el => el ** 3).filter(el => el % 2).reduce((acc, el) => acc+=el,0);
 // }
 // console.log(cubeOdd([1, 2, 3, 4]));
-console.log(isNaN('a'))
+
+
+//Primes in numbers
+function primeFactors(n){
+  let primes = [];
+
+  nextNum: for(let i = 2; i <= n; i++) {
+    console.log(i);
+    //check if divisor is prime
+    for(let j = 2; j < i; j++) {
+      if (!(i % j)) {
+        continue nextNum;
+      } 
+    }
+
+    //check if n divided by the prime
+    if (!(n % i)) {
+        n /= i;
+        primes.push(i);
+        i--;
+    } else {
+      continue nextNum;
+    }
+  }
+
+  return primes;
+}
+console.log(primeFactors(45));
