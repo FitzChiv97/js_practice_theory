@@ -3546,25 +3546,26 @@ function nextBigger(n) {
 function primeFactors(n){
   let primes = [];
 
-  nextNum: for(let i = 2; i <= n; i++) {
-    console.log(i);
-    //check if divisor is prime
-    for(let j = 2; j < i; j++) {
-      if (!(i % j)) {
-        continue nextNum;
-      } 
-    }
-
-    //check if n divided by the prime
-    if (!(n % i)) {
-        n /= i;
-        primes.push(i);
-        i--;
-    } else {
-      continue nextNum;
+  for(let i = 2; n !== 1; i++) {
+    if (n % i === 0) {
+      n /= i;
+      primes.push(i);
+      i--;
     }
   }
 
-  return primes;
+  return primes.reduce((acc, el, id, arr) => {
+    let lastGroup = acc[acc.length-1];
+
+    if (lastGroup && lastGroup[0] === el){
+      acc[acc.length-1].push(el);
+    } else {
+      acc.push([el]);
+    }
+    return acc;
+  }, []).map((el) => {
+    if (el.length > 1) return `(${el[0]}**${el.length})`;
+    else return `(${el[0]})`;
+  }).join('');
 }
-console.log(primeFactors(45));
+console.log(primeFactors(86240));
