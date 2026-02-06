@@ -3543,29 +3543,51 @@ function nextBigger(n) {
 
 
 //Primes in numbers
-function primeFactors(n){
-  let primes = [];
+// function primeFactors(n){
+//   let primes = [];
 
-  for(let i = 2; n !== 1; i++) {
-    if (n % i === 0) {
-      n /= i;
-      primes.push(i);
-      i--;
-    }
-  }
+//   for(let i = 2; n !== 1; i++) {
+//     if (n % i === 0) {
+//       n /= i;
+//       primes.push(i);
+//       i--;
+//     }
+//   }
 
-  return primes.reduce((acc, el, id, arr) => {
-    let lastGroup = acc[acc.length-1];
+//   return primes.reduce((acc, el, id, arr) => {
+//     let lastGroup = acc[acc.length-1];
 
-    if (lastGroup && lastGroup[0] === el){
-      acc[acc.length-1].push(el);
-    } else {
-      acc.push([el]);
-    }
-    return acc;
-  }, []).map((el) => {
-    if (el.length > 1) return `(${el[0]}**${el.length})`;
-    else return `(${el[0]})`;
-  }).join('');
-}
-console.log(primeFactors(86240));
+//     if (lastGroup && lastGroup[0] === el){
+//       acc[acc.length-1].push(el);
+//     } else {
+//       acc.push([el]);
+//     }
+//     return acc;
+    
+//   }, []).map((el) => {
+//     if (el.length > 1) return `(${el[0]}**${el.length})`;
+//     else return `(${el[0]})`;
+//   }).join('');
+// }
+// console.log(primeFactors(86240));
+
+
+// Nth Smallest Element (Array Series #4)
+// function nthSmallest(arr, pos) {
+//   return arr
+//     .sort((a,b) => a - b)
+//     .find((_, id) => pos === id+1);
+// }
+
+
+// Lost number in number sequence
+// function findDeletedNumber(arr,mixArr) {
+//   return arr.find((el, id) => mixArr.indexOf(el) === -1) || 0;
+// }
+
+
+// Find the nth Digit of a Number
+// function findDigit(num,nth) {
+//   if(nth < 1) return -1;
+//   return Array.from(String(Math.abs(num)), el => Number(el)).reverse()[nth-1] || 0;
+// }
