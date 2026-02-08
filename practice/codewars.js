@@ -3591,3 +3591,62 @@ function nextBigger(n) {
 //   if(nth < 1) return -1;
 //   return Array.from(String(Math.abs(num)), el => Number(el)).reverse()[nth-1] || 0;
 // }
+
+
+// Help the bookseller !
+// function stockList(books, categories) {
+//   if(!books.length || !categories.length) return '';
+
+//   let output = {};
+//   categories.forEach(cat => output[cat] = 0);
+
+//   //better approach
+//   for(let book of books) {
+//     const [code, qty] = book.split(' ');
+//     const category = code[0];
+
+//     if(category in output) {
+//       output[category] += Number(qty);
+//     }
+//   }
+
+//   /* my solution
+//   for(let cat in output) {
+//     for(let code of books) {
+//       if(cat === code[0]) {
+//         code = +code.slice(code.indexOf(' ')).trim();
+//         output[cat] += code;
+//       }
+//     }
+//   }
+//   */
+
+//   return Object.entries(output)
+//    .map(([cat, qty]) => `(${cat} : ${qty})`)
+//    .join(' - ');
+// }
+// console.log(stockList(
+//   ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"], 
+//   ["A", "B", "C", "D"]));
+
+
+// Sums of Parts(2 solutions)
+// function partsSums(ls) {
+//   let total = ls.reduce((sum,el) => sum += el, 0);
+//   let result = [total];
+
+//   ls.forEach((el) => {
+//     total -= el; 
+//     result.push(total);
+//   })
+
+//   return result;
+// }
+
+function partsSums(ls) {
+  // ls.unshift(0);
+  console.log(ls);
+  let total = ls.reduce((sum,el) => sum += el, 0);
+  return ls.map(el => total -= el);
+}
+console.log(partsSums([1,2,3,4,5,6]));
