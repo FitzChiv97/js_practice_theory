@@ -3643,10 +3643,55 @@ function nextBigger(n) {
 //   return result;
 // }
 
-function partsSums(ls) {
-  // ls.unshift(0);
-  console.log(ls);
-  let total = ls.reduce((sum,el) => sum += el, 0);
-  return ls.map(el => total -= el);
-}
-console.log(partsSums([1,2,3,4,5,6]));
+// function partsSums(ls) {
+//   ls.unshift(0);
+//   let total = ls.reduce((sum,el) => sum += el, 0);
+//   return ls.map(el => total -= el);
+// }
+// console.log(partsSums([1,2,3,4,5,6]));
+
+
+// Reverse or rotate?
+// function revrot(str, sz) {
+//   if (sz <= 0 || str === '') return '';
+
+//   let arr = str.split('');
+//   let chunks = [];
+
+//   while (arr.length >= sz) {
+//     chunks.push(arr.splice(0, sz));
+//   }
+
+//   return chunks.map(chunk => {
+//     let sum = chunk.reduce((sum,el) => {
+//       return sum += Number(el);
+//     }, 0);
+    
+//     (sum % 2) ? chunk.push(chunk.shift()): chunk.reverse();
+
+//     return chunk.join('');
+//   }).join('');
+// }
+// console.log(revrot("733049910872815764", 5));
+
+
+//Can you get the loop?
+// function loop_size(node) {
+//   let loopedObjects = new Set();
+
+//   while(!loopedObjects.has(node)) {
+//     loopedObjects.add(node);
+//     node = node.next;
+//   }
+
+//   let loopStart = node;
+//   let count = 1;
+//   let current = loopStart.next
+
+//   while(current !== loopStart) {
+//     count++;
+//     current = current.next;
+//   }
+  
+//   return count;
+// }
