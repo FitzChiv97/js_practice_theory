@@ -3338,46 +3338,6 @@ let dir = {
 // console.log(validBraces('([{}])'));
 
 
-// Next bigger number with the same digits
-function nextBigger(n) {
-  let nums = Array.from(String(n), num => Number(num));
-  console.log(nums);
-  let bigNums = [];
-  
-  for(let i = 0; i < nums.length; i++) {
-    let copiedNums = [...nums];
-    let baseNum = copiedNums.splice(i, 1).join();
-    let rearrangedNum = [];
-
-    for(let j = 0; j < copiedNums.length; j++) {
-      rearrangedNum = [baseNum, copiedNums.push(copiedNums.shift())];
-      bigNums.push(rearrangedNum.join());
-      rearrangedNum = [];
-    }
-
-    console.log(bigNums);
-  }
-
-  // console.log(bigNums);
-
-  // if (bigNums.every(el => !(el % n))) return -1;
-
-  // let firstBigNum = Number(bigNums.sort((a,b) => (n-a) - (b-a)).find(num => num > n));
-
-  // return firstBigNum ? firstBigNum: -1;
-}
-
-// console.log(nextBigger(2017));
-// console.log(nextBigger(111));
-// console.log(nextBigger(531));
-// console.log(nextBigger(9));
-
-// console.log(nextBigger(1897));
-
-// 1897(expected 1987 => 1978) 
-// 2890(expected 2980 => 2908)
-
-
 // String matchup (2 solutions)
 // function solve(a,b) {
 //   return b.map(el => {
@@ -3711,3 +3671,55 @@ function nextBigger(n) {
 //   return trailingZeroes;
 // }
 // console.log((zeros(1000)));
+
+
+// Next bigger number with the same digits
+function nextBigger(n) {
+  let nums = [...String(n)];
+  let bigNum = -1;
+
+
+
+}
+
+// console.log(nextBigger(2017));
+// console.log(nextBigger(111));
+// console.log(nextBigger(531));
+// console.log(nextBigger(9));
+
+// console.log(nextBigger(1897));
+
+// 1897(expected 1987 => 1978) 
+// 2890(expected 2980 => 2908)
+
+let arr = [...String(1897)];
+console.log(arr);
+
+let removedEl = arr.splice(1, 1).join('');
+console.log(removedEl);
+
+arr.splice(2,0, removedEl)
+console.log(arr);
+
+removedEl = arr.splice(2, 1).join('');
+console.log(removedEl);
+
+arr.splice(3,0, removedEl)
+console.log(arr);
+
+removedEl = arr.splice(3, 1).join('');
+console.log(removedEl);
+
+arr.splice(0,0, removedEl)
+console.log(arr);
+
+removedEl = arr.splice(0, 1).join('');
+console.log(removedEl);
+
+arr.splice(1,0, removedEl)
+console.log(arr);
+
+
+function moveElement(arr, fromIndex, toIndex) {
+
+}

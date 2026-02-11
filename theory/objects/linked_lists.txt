@@ -1,0 +1,115 @@
+# Linked Lists and Loop Detection in JavaScript
+
+## 1. What is a Node?
+
+A **node** is an object that contains:
+
+- **Data/value** (e.g., a number, string, or any value)
+- **Reference to another node** (`next`)
+
+Example:
+
+```js
+let node = {
+  value: 10,
+  next: null // points to the next node or null if none
+};
+A linked list is a chain of nodes:
+
+nodeA -> nodeB -> nodeC -> null
+2. Loop in a Linked List
+A loop occurs when a node’s next points to an earlier node, instead of null:
+
+D -> E -> F -> G
+     ^       |
+     |-------|
+This is also called a cycle
+
+Useful in round-robin scheduling, playlists, or game loops
+
+Important in coding challenges to detect cycles and count their length
+
+3. Conceptual Approach to Detect Loop Length
+Traverse the linked list node by node.
+
+Keep a record of visited nodes (e.g., a Set in JS).
+
+The first repeated node is the start of the loop.
+
+Count nodes inside the loop by moving along next until returning to the loop start.
+
+Ignore the dangling piece (nodes before the loop) — they only appear once.
+
+Analogy:
+
+Dangling piece = straight road before the circular track
+
+Loop = circular track
+
+Set = notebook where you mark which nodes you’ve visited
+
+4. Example in JavaScript
+// Linked list setup
+let user1 = {name: 'Jon', next: null};
+let user2 = {name: 'Sam', next: null};
+let user3 = {name: 'Arya', next: null};
+let user4 = {name: 'Ned', next: null};
+let user5 = {name: 'Robb', next: null};
+let user6 = {name: 'Catelyn', next: null};
+let user7 = {name: 'Varys', next: null};
+
+// Connect dangling piece
+user1.next = user2;
+user2.next = user3;
+user3.next = user4;
+
+// Connect loop
+user4.next = user5;
+user5.next = user6;
+user6.next = user7;
+user7.next = user5; // creates loop
+
+// Function to find loop length
+function loop_size(node) {
+  let loopedObjects = new Set();
+
+  // Step 1: Traverse until first repeated node (loop start)
+  while (!loopedObjects.has(node)) {
+    loopedObjects.add(node);
+    node = node.next;
+  }
+
+  // Step 2: 'node' is now the start of the loop
+  let loopStart = node;
+  let count = 1;
+  let current = loopStart.next;
+
+  // Step 3: Traverse the loop and count nodes
+  while (current !== loopStart) {
+    count++;
+    current = current.next;
+  }
+
+  return count;
+}
+
+// Test
+console.log(loop_size(user1)); // Output: 4
+5. Key Points to Remember
+node.next is a reference to another node
+
+Linked lists don’t have indexes or length — you must traverse to access nodes
+
+Loops in linked lists are detected by:
+
+Keeping a Set of visited nodes
+
+Or using two-pointer method (Floyd’s Tortoise and Hare) for optimization
+
+Counting the loop:
+
+Start from the first repeated node
+
+Move forward until you return to the same node
+
+Count each step → loop length

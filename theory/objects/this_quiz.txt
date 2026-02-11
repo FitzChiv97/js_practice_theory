@@ -1,0 +1,110 @@
+# `this` Quiz (Strict Mode)
+
+```js
+function sayHi() {
+  return this;
+}
+
+sayHi();
+```
+**Answer**: `undefined`
+**Why**: Regular function call → `this === undefined`
+
+---
+
+```js
+const user = {
+  name: "Anna",
+  sayHi() {
+    return this.name;
+  }
+};
+
+user.sayHi();
+
+```
+**Answer**: "Anna"
+**Why**: Method call → `this === user`
+
+---
+
+```js
+const user = {
+  name: "Anna",
+  sayHi() {
+    return this;
+  }
+};
+
+const fn = user.sayHi;
+fn();
+```
+**Answer**: `undefined`
+
+**Why**:
+- `fn()` is a plain function call
+- No object before the dot
+- `this === undefined`
+
+---
+
+```js
+const user = {
+  name: "Anna",
+  sayHi() {
+    return this.name;
+  }
+};
+
+const admin = {
+  name: "Admin",
+  sayHi: user.sayHi
+};
+
+admin.sayHi();
+```
+**Answer**: "Admin"
+
+**Why**:
+- Function is reused
+- Call form is `admin.sayHi()`
+- `this === admin`
+
+---
+
+```js
+const user = {
+  name: "Anna",
+  sayHi: () => {
+    return this.name;
+  }
+};
+
+user.sayHi();
+```
+**Answer**: undefined
+
+**Why**:
+- Arrow functions do not have their own this
+- They take this from the outer (lexical) scope
+- In strict mode, top-level `this === undefined`
+
+---
+
+```js
+function makeUser() {
+  return {
+    name: "Anna",
+    ref() {
+      return this;
+    }
+  };
+}
+
+makeUser().ref();
+//{ name: "Anna", ref: f }
+```
+**Why**:
+- `makeUser()` returns an object
+- `.ref()` is called as a method
+- `this === returned object`

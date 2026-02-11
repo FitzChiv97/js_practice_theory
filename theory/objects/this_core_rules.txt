@@ -1,0 +1,84 @@
+# Understanding `this` in JavaScript
+
+Assume **strict mode** unless stated otherwise.
+
+---
+
+## Core Rule
+
+> **`this` is determined at call time, not at declaration time.**
+Look at the call expression. If there’s an object before the dot, that’s this. 
+Otherwise, it’s undefined (in strict mode).
+
+Functions do **not** store a `this` value.
+JS assigns `this` **when a function is called**, based on *how* it is called.
+
+---
+
+## Example 1: Why `ref` is `undefined`
+
+```js
+function makeUser() {
+  return {
+    name: "John",
+    ref: this
+  };
+}
+
+const user = makeUser();
+//user.ref === undefined
+```
+1. `makeUser()` is called as a regular function
+2. In strict mode: `this === undefined`
+3. `ref: this` is evaluated inside makeUser call
+4. The value of this (undefined) is copied into the object
+
+### Key Point
+- this does not magically become the returned object.
+- It is evaluated before the object exists.
+
+## Example 2: Why ref() Works
+
+```js
+function makeUser() {
+  return {
+    name: "John",
+    ref() {
+      return this;
+    }
+  };
+}
+const user = makeUser();
+user.ref();   
+// { name: "John", ref: f }
+```
+### What happens?
+1. `ref` is a method
+2. It is called as `user.ref()`
+3. this is set to the object before the dot
+
+### Why this works
+1. `this` is evaluated when `ref()` is called
+2. The call form is `object.method()`
+3. So `this === object`
+
+Mental Model (Very Important)
+❌ "`this` refers to the object it’s written in"
+✅ "`this` refers to the object before the dot when the function is called"
+
+> this определяется один раз — в момент вызова функции.
+> И зависит ТОЛЬКО от того, как функция была вызвана.
+> Сначала определяется this → потом выполняется код функции.
+
+
+
+
+
+
+
+
+
+
+
+
+

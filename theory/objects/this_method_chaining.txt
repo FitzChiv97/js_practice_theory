@@ -1,0 +1,44 @@
+```js
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep: function() { 
+    console.log(this.step);
+    return this;
+  }
+};
+
+ladder.up().up().showStep().up().down();
+```
+
+## Key points
+
+1. Each method modifies `this.step`
+2. Each method returns `this`, which allows method chaining
+
+## Concise ES6 with optional starting step
+```js
+const createLadder = (start = 0) => ({
+  step: start,
+  up() { this.step++; return this; },
+  down() { this.step--; return this; },
+  showStep() { console.log(this.step); return this; }
+});
+```
+
+- `start = 0` → default value if no argument is given
+- `=> ({ ... })` syntax → implicitly returns a new object
+- Each object has:
+ - step property initialized to start
+ - Methods `up`, `down`, `showStep` using `this` to refer to that object
+
+Normally, curly braces `{}` in JS are interpreted as a block, not an object
+**Solution**: wrap the object in parentheses `({ ... })`
+Parentheses tell JS: **“This is an expression, not a block”**
