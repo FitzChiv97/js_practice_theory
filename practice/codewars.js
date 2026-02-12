@@ -3673,53 +3673,33 @@ let dir = {
 // console.log((zeros(1000)));
 
 
-// Next bigger number with the same digits
+// Next bigger number with the same digits (4 kyu)
 function nextBigger(n) {
-  let nums = [...String(n)];
-  let bigNum = -1;
+  let arr = [...String(n)];
 
+  //find the first num that is smaller than the num after it
+  let breakPointId = arr.findLastIndex((el,id,arr) => {
+    return el > arr[id - 1];
+  });
 
+  if (breakPointId === -1) return breakPointId;
 
+  let rightPart = arr.splice(breakPointId);
+  let breakPoint = arr.pop();
+
+  let biggerThanBreakPoint = null;
+  //run cycle here on each num of the rightPart
 }
 
-// console.log(nextBigger(2017));
-// console.log(nextBigger(111));
-// console.log(nextBigger(531));
-// console.log(nextBigger(9));
-
-// console.log(nextBigger(1897));
+console.log(nextBigger(534976));
+console.log(nextBigger(1897));
+console.log(nextBigger(2017));
 
 // 1897(expected 1987 => 1978) 
 // 2890(expected 2980 => 2908)
 
-let arr = [...String(1897)];
-console.log(arr);
-
-let removedEl = arr.splice(1, 1).join('');
-console.log(removedEl);
-
-arr.splice(2,0, removedEl)
-console.log(arr);
-
-removedEl = arr.splice(2, 1).join('');
-console.log(removedEl);
-
-arr.splice(3,0, removedEl)
-console.log(arr);
-
-removedEl = arr.splice(3, 1).join('');
-console.log(removedEl);
-
-arr.splice(0,0, removedEl)
-console.log(arr);
-
-removedEl = arr.splice(0, 1).join('');
-console.log(removedEl);
-
-arr.splice(1,0, removedEl)
-console.log(arr);
-
-
-function moveElement(arr, fromIndex, toIndex) {
-
-}
+/*
+1 - Scan from right to left, look for the first digit that is smaller than the digit after it.
+2 - Among the digits to the right, what is the smallest digit that is bigger than this digit?
+*/
+ 
