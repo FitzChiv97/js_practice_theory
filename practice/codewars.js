@@ -3675,25 +3675,40 @@ let dir = {
 
 // Next bigger number with the same digits (4 kyu)
 function nextBigger(n) {
-  let arr = [...String(n)];
+  let leftPart = [...String(n)];
 
   //find the first num that is smaller than the num after it
-  let breakPointId = arr.findLastIndex((el,id,arr) => {
+  let breakPointId = leftPart.findLastIndex((el,id,arr) => {
     return el > arr[id - 1];
   });
 
+  console.log(leftPart);
+  console.log(breakPointId);
+
   if (breakPointId === -1) return breakPointId;
 
-  let rightPart = arr.splice(breakPointId);
-  let breakPoint = arr.pop();
+  let rightPart = leftPart.splice(breakPointId);
+  let breakPoint = leftPart.pop();
 
-  let biggerThanBreakPoint = null;
-  //run cycle here on each num of the rightPart
+  console.log(rightPart);
+  console.log(breakPoint);
+
+  // sort rightPart and take out the first num that is bigger than breakPoint
+  let biggerThanBreakPoint = (rightPart
+    .sort()
+    .splice(rightPart.findIndex(el => el > breakPoint), 1));
+
+  console.log(rightPart);
+  console.log(biggerThanBreakPoint);
+
+  return +[...leftPart, ...biggerThanBreakPoint, ...breakPoint, ...rightPart].join('');
 }
 
-console.log(nextBigger(534976));
-console.log(nextBigger(1897));
-console.log(nextBigger(2017));
+console.log(nextBigger(1234567890));
+console.log(nextBigger(281));
+console.log(nextBigger(5349761));
+// console.log(nextBigger(1897));
+// console.log(nextBigger(2017));
 
 // 1897(expected 1987 => 1978) 
 // 2890(expected 2980 => 2908)
@@ -3702,4 +3717,3 @@ console.log(nextBigger(2017));
 1 - Scan from right to left, look for the first digit that is smaller than the digit after it.
 2 - Among the digits to the right, what is the smallest digit that is bigger than this digit?
 */
- 
