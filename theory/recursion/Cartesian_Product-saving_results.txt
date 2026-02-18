@@ -1,0 +1,52 @@
+##The Core Concept of Saving or Copying Arrays
+
+- JavaScript arrays are **Reference types (objects)**
+- Variables don’t store the array, they store `Pointer → memory location`
+
+I kept storing the same pointer to changing argument here: `result.push(combination)`
+It resulted in : `[ [], [], [] ]`
+
+**Spread Operator** Fixes It:
+`result.push([...combination])` → creates **NEW array** in memory
+
+So instead of:
+`result[0] → ref to combination`
+I get: 
+`result[0] → store independent copy [1,3,6]`
+
+Now when `combination` changes later, this copy does NOT change.
+
+Simple Example that demonstrates the same issue:
+```js
+let arr = [];
+let result = [];
+
+arr.push(1);
+result.push(arr);
+
+arr.push(2);
+result.push(arr);
+
+arr.pop();
+arr.pop();
+
+console.log(result);
+// [ [], [] ] - Because both entries point to the same arr
+```
+
+##Rule of Thumb
+
+Whenever you're storing:
+
+- partial combinations
+- paths
+- states
+- backtracking results
+
+You almost always need: `result.push([...combination])`
+
+---
+> You get empty arrays because every element in result references the same `combination` array, and backtracking eventually empties it.
+---
+
+

@@ -3711,42 +3711,133 @@ let dir = {
 
 
 // The observed PIN (4 kuy)
-function getPINs(observed) {
-  let adjecentDigits = {
-    '1': [1,2,4],
-    '2': [1,2,3,5],
-    '3': [2,3,6],
-    '4': [1,4,5,7],
-    '5': [2,4,5,6,8],
-    '6': [3,5,6,9],
-    '7': [4,7,8],
-    '8': [0,5,7,8,9],
-    '9': [6,8,9],
-    '0': [0, 8],
-  }
+// function getPINs(observed) {
+//   let adjecentDigits = {
+//     '1': [1,2,4],
+//     '2': [1,2,3,5],
+//     '3': [2,3,6],
+//     '4': [1,4,5,7],
+//     '5': [2,4,5,6,8],
+//     '6': [3,5,6,9],
+//     '7': [4,7,8],
+//     '8': [0,5,7,8,9],
+//     '9': [6,8,9],
+//     '0': [0, 8],
+//   }
 
-  let array = observed.split('').map(el => {
-    for(let key in adjecentDigits) {
-      if (el === key) return adjecentDigits[key];
+//   let array = observed.split('').map(el => {
+//     for(let key in adjecentDigits) {
+//       if (el === key) return adjecentDigits[key];
+//     }
+//   })
+
+//   return getCombinations(0, array);
+// }
+
+// function getCombinations(id = 0, array, combination = [], result = []) {
+//   if (id === array.length) {
+//     result.push([...combination].join(''));
+//     return result;
+//   }
+
+//   for(let el of array[id]) {
+//     combination.push(el);
+//     getCombinations(id + 1, array, combination, result);
+//     combination.pop();
+//   }
+
+//   return result;
+// }
+
+// console.log(getPINs('560198'));
+
+
+//validateBattlefield (3 kuy)
+function validateBattlefield(field) {
+  let results = [];
+  
+  for(let i = 0; i < field.length; i++) {
+    // inside a row
+    for(let j = 0; j < field[i].length; j++) {
+      // current cell
+      if (field[i][j] === 1) {
+        console.log(`row: ${i}, cell: ${j}`);
+        
+        // checkDiagonalCells clockwise around currentCellId 
+        if(!checkDiagonalCells(field[i-1], field[i+1], j)) return false;
+        
+        // count length of ships and their amount 
+        field[i][j] = 0;
+        let length = 1;
+        let step = 1;
+        
+        // horizontal check
+        let horizontalCell = field[i][j + step];
+        while(horizontalCell !== 0) {
+          // checkDiagonalCells clockwise around further horizontalCells 
+          if(!checkDiagonalCells(field[i - 1], field[i + 1], j + step)) return false;
+          // assign 0 to current horizontalCell
+          field[i][j + step] = 0;
+          step++;                                // here's an Error!
+          length++;
+          // move to the next horizontalCell
+          horizontalCell = field[i][j + step];
+          console.log(`step: ${step}`)
+        }
+        
+        // vertical check
+        let verticalCell = field[i + step][j];
+        console.log(`VERTICAL CELL: ${verticalCell}`);
+        while(verticalCell !== 0) {
+          // checkDiagonalCells clockwise around further verticalCells 
+          if(!checkDiagonalCells(field[i + (step - 1)], field[i + (step + 1)], j)) return false;
+          // assign 0 to current verticalCell
+          field[i + step][j] = 0;
+          step++;
+          length++;
+          // move to the next verticalCell
+          verticalCell = field[i + step][j];
+        }
+        console.log(length);
+        results.push(length);
+      }
     }
-  })
-
-  return getCombinations(0, array);
+  }
+  return results;
 }
 
-function getCombinations(id = 0, array, combination = [], result = []) {
-  if (id === array.length) {
-    result.push([...combination].join(''));
-    return result;
+function checkDiagonalCells(upperRow, lowerRow, currentCellId) {
+  if(upperRow) {
+    let upperLeftDiagonal = upperRow[currentCellId - 1];
+    console.log(`upperLeft: ${upperLeftDiagonal}`);
+    
+    let upperRightDiagonal = upperRow[currentCellId + 1];
+    console.log(`upperRight: ${upperRightDiagonal}`);
+
+    if(upperLeftDiagonal || upperRightDiagonal) return false;
   }
 
-  for(let el of array[id]) {
-    combination.push(el);
-    getCombinations(id + 1, array, combination, result);
-    combination.pop();
-  }
+  if(lowerRow) {
+    let lowerLeftDiagonal = lowerRow[currentCellId - 1];
+    console.log(`lowerLeft: ${lowerLeftDiagonal}`);
+    
+    let lowerRightDiagonal = lowerRow[currentCellId + 1];
+    console.log(`lowerRight: ${lowerRightDiagonal}`);
 
-  return result;
+    if(lowerLeftDiagonal || lowerRightDiagonal) return false;
+  }
+  
+  return true;
 }
 
-console.log(getPINs('560198'));
+validateBattlefield(
+ [[1, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+  [1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+  [1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ]);

@@ -1,0 +1,27 @@
+let array = [[1, 2], [3, 4, 5], [6, 7]];
+
+function getCombinations(array, id = 0, combination = [], result = []) {
+  // base case
+  if (id === array.length) {
+    console.log('FINAL:', combination);
+    result.push([...combination]);
+    return result;
+  } 
+
+  for (let num of array[id]) {
+    console.log(`depth: ${id}; num: ${num}`);
+
+    combination.push(num);
+    console.log(`interim combination: ${combination}`);
+      
+    // recurse to the next depth
+    getCombinations(array, id + 1, combination, result);
+      
+    // backtrack and remove last number from the combination
+    combination.pop();
+  }
+
+  return result;
+}
+
+getCombinations(array);
