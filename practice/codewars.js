@@ -3879,12 +3879,34 @@ console.log(test);
 */
 
 //My Language Skills
-function myLanguages(results) {
-  return Object.entries(results)
-    .filter(lang => lang[1] >= 60)
-    .sort((a,b) => b[1] - a[1])
-    .map(el => el[0]);
-}
+// function myLanguages(results) {
+//   return Object.entries(results)
+//     .filter(lang => lang[1] >= 60)
+//     .sort((a,b) => b[1] - a[1])
+//     .map(el => el[0]);
+// }
 
-let result = myLanguages({"Java" : 10, "Ruby" : 80, "Python" : 65, "Huskel": 67});
-console.log(result);
+// let result = myLanguages({"Java" : 10, "Ruby" : 80, "Python" : 65, "Huskel": 67});
+// console.log(result);
+
+
+// Data Reverse (2 solutions)
+// function dataReverse(data) {
+//   let bytes = Array.from(Array(data.length / 8), byte => []);
+
+//   for(let byte of bytes) {
+//     byte.push(...data.splice(0, 8));
+//   }
+
+//   return bytes.reverse().flat();
+// } 
+
+function dataReverse(data) {
+  let bytes = [];
+
+  for(let i = 0; i < data.length; i += 8) {
+    bytes.unshift(...data.slice(i, i + 8));
+    console.log(bytes);
+  }
+}
+console.log(dataReverse([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]));
